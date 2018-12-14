@@ -1,0 +1,16 @@
+parsing_table
+E id TE'
+E ( TE'
+E' + +TE'
+E' ) {
+E' $ {
+T id FT'
+T ( FT'
+T' + {
+T' * *FT'
+T' ) {
+T' $ {
+F id id
+F ( (E)
+END
+E id+id*id

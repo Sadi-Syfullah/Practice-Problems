@@ -1,0 +1,314 @@
+lexical_operator...................
+
+#include<bits/stdc++.h>
+using namespace std;
+string op="+-/%^&*<>^!=";
+int main()
+{
+    int i,j,n;
+    string s;
+    freopen("input4.txt","r",stdin);
+    freopen("output4.txt","w",stdout);
+    while(cin>>s)
+    {
+        cout<<"hi.."<<s<<endl;
+        while(s.empty()==false)
+        {
+            while(1)
+            {
+                if(s.empty()==true)
+                    break;
+                for(i=0; i<op.size(); i++)
+                {
+                    if(s[0]==op[i])
+                        break;
+                }
+                if(i<op.size())
+                    break;
+                s.erase(s.begin());
+            }
+            cout<<"sadi.."<<s[0]<<endl;
+            if(s.empty())
+                continue;
+            cout<<s[0];
+            s.erase(s.begin());
+            for(i=0; i<op.size(); i++)
+            {
+                if(op[i]==s[0])
+                {
+                    cout<<s[0];
+                    s.erase(s.begin());
+
+                }
+            }
+            cout<<endl;
+        }
+
+    }
+    return 0;
+}
+
+
+identifier....................
+
+#include<bits/stdc++.h>
+using namespace std;
+string key[33]= {"int", "main","float","break" };
+int main()
+{
+    int a,b,i,j,k;
+    string s,c;
+    char ch;
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    while(cin>>s)
+    {
+
+
+        while(1)
+        {
+            if (s.empty())
+                break;
+            j=0;
+            c.clear();
+            while(1)
+            {
+                if(isalnum(s[0]))
+                    break;
+                if(s[0]=='_')
+                    break;
+                if( s.empty())
+                    break;
+                s.erase(s.begin());
+            }
+            if(s.empty())
+                continue;
+            for(i=0; i<s.size(); i++)
+            {
+
+
+                if(isalnum(s[i]) || isdigit(s[i]) || s[i]=='_')
+                    j++;
+                else
+                    break;
+            }
+            c=s.substr(0,j);
+            s.erase(s.begin(),s.begin()+j);
+            for(i=0; i<32; i++)
+            {
+                if(c==key[i])
+                    break;
+            }
+            if(i>=32)
+                cout<<c<<endl;
+
+        }
+    }
+    return 0;
+}
+
+
+
+
+
+keyword.............................
+
+#include<bits/stdc++.h>
+using namespace std;
+string key[33]={"int","main","float","for","while"};
+int main()
+{
+    int i,j,k,a,b;
+    string s,c;
+    char ch;
+    freopen("input1.txt","r",stdin);
+    freopen("output1.txt","w",stdout);
+    while(cin>>s)
+    {
+        c.clear();j=0;
+        for(i=0;i<s.size();i++)
+        {
+            if(isalpha(s[i]))j++;
+            else break;
+        }
+        c=s.substr(0,j);
+        for(i=0;i<32;i++)
+        {
+            if(c==key[i])break;
+        }
+        if(i<32)
+        {
+            cout<<c<<endl;
+        }
+    }
+    return 0;
+}
+
+
+
+
+
+
+special_charecter'''''''''''''''''''''
+
+#include<bits/stdc++.h>
+using namespace std;
+string single_op="+-*&^<>=~/%";
+int main()
+{
+    int i,j,k,a,b,c;
+    string s;
+    char ch;
+    freopen("specialcharacterinput.txt","r",stdin);
+    freopen("specialcharacteroutput.txt","w",stdout);
+    while(cin>>s)
+    {
+        if(ispunct(ch))
+        {
+            for(i=0;i<single_op.size();i++)
+            if(ch==single_op[i])break;
+            if(i>=single_op.size())
+            cout<<ch<<endl;
+        }
+    }
+    return 0;
+}
+
+
+
+
+
+terminal&nonterminal...........
+
+#include<bits/stdc++.h>
+using namespace std;
+map<string,bool>check_T;
+map<string,bool>check_nT;
+vector<string>terminal;
+vector<string>nonterminal;
+void is_terminal(string ss)
+{
+    if(ss.size()>0)
+    {
+        if(check_T[ss]==false)
+        {
+            terminal.push_back(ss);
+            check_T[ss]=true;
+        }
+    }
+}
+
+void is_nonterminal(string ss)
+{
+    if(check_nT[ss]==false)
+    {
+        nonterminal.push_back(ss);
+        check_nT[ss]=true;
+    }
+}
+
+int main()
+{
+    int i,j,a,n=0;;
+    string s,c,s1;
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    while(cin>>s)
+    {
+        n++;
+        c=s[0];
+        is_nonterminal(c);
+        s.erase(s.begin(),s.begin()+3);
+        j=0;
+        c.clear();
+        while(s.empty()==false)
+        {
+            if(isupper(s[0])){
+                is_terminal(c);
+                c.clear();
+                c=s[0];
+                s.erase(s.begin());
+                is_nonterminal(c);
+                c.clear();
+            }
+
+            else if(s[0]=='|' or s[0]=='+'){
+                is_terminal(c);
+                c.clear();
+                if(s[0]=='|') n++;
+                s.erase(s.begin());
+            }
+            else
+            {
+                c+=s[0];
+                s.erase(s.begin());
+            }
+        }
+        is_terminal(c);
+    }
+    cout<<"Number of transition : "<<n<<endl;
+    cout<<"Terminals : "<<endl;
+    for(i=0;i<terminal.size();i++)
+    {
+        cout<<"    "<<terminal[i]<<endl;
+    }
+    cout<<"Nonterminals : "<<endl;
+    for(i=0;i<nonterminal.size();i++)
+    {
+        cout<<"    "<<nonterminal[i]<<endl;
+    }
+    return 0;
+}
+
+
+
+input....
+int main()
+{  
+  int a,b,c;
+  cin>>a>>b;
+  c=a+b;
+  cout<<c;
+  return 0;
+}
+
+input 1......
+
+int main()
+{ 
+  int a,sum=0;
+  float b;
+  for(i=0;i<=a;i++)
+  sum+=i;
+  printf("%d",sum);
+}
+
+input 3.....
+
+int main()
+{
+  int a,b,a_sum;
+  a=10;b=20;
+  a_sum=a+b;
+  cout<<a_sum;
+}
+
+input5.....
+
+int main()
+{
+  int a=20,b=-30;
+  int a3=a+b;
+  cout<<a3;
+}
+
+
+
+
+
+
+
+
+
+
+

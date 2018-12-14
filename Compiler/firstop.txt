@@ -1,0 +1,33 @@
+
+Enter Total Number of Productions:	
+Value of Production Number [1]:	
+Value of Production Number [2]:	
+Value of Production Number [3]:	
+Value of Production Number [4]:	
+Value of Production Number [5]:	
+Value of Production Number [6]:	
+Value of Production Number [7]:	
+Value of Production Number [8]:	
+Enter a Value to Find First:	
+First Value of E:	{  (  a }
+
+Enter a Value to Find First:	
+First Value of D:	{  +  $ }
+
+Enter a Value to Find First:	
+First Value of D:	{  +  $ }
+
+Enter a Value to Find First:	
+First Value of T:	{  (  a }
+
+Enter a Value to Find First:	
+First Value of S:	{  *  $ }
+
+Enter a Value to Find First:	
+First Value of S:	{  *  $ }
+
+Enter a Value to Find First:	
+First Value of F:	{  (  a }
+
+Enter a Value to Find First:	
+First Value of F:	{  (  a }

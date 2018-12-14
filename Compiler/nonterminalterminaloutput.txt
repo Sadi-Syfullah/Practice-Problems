@@ -1,0 +1,8 @@
+number of transition:3
+terminals:
+a
++
+id
+nonterminal:
+E
+T

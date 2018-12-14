@@ -1,0 +1,10 @@
+Number of transition : 6
+Terminals : 
+    *
+    (
+    )
+    id
+Nonterminals : 
+    E
+    T
+    F
